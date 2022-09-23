@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +30,9 @@ SECRET_KEY = 'django-insecure-uy9x%l9@kq97y1syl$ri6h&e-tx!(*&-kvse4kd^&b&s6qp#q_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = []
+APPEND_SLASH=False
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,5 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SLACK_CLIENT_ID = os.environ.get('SLACK_CLIENT_ID', None)
 SLACK_CLIENT_SECRET = os.environ.get('SLACK_CLIENT_SECRET', None)
-SLACK_VERIFICATION_TOKEN = os.environ.get('SLACK_VERIFICATION_TOKEN', None)
+SLACK_OAUTH_TOKEN = os.environ.get('SLACK_OAUTH_TOKEN', None)
 SLACK_BOT_USER_TOKEN = os.environ.get('SLACK_BOT_USER_TOKEN', None)
